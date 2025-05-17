@@ -1,0 +1,31 @@
+.hero {
+  /* Отступ сверху от header и снизу от окна по 1rem */
+  width: 100%;
+  min-height: calc(100vh - var(--header-height) - 2 * var(--vertical-gap));
+  margin: 0 auto;
+
+  padding: 0 var(--container-gutter);
+
+  /* 1. Задаём базовую высоту: весь viewport минус 2rem на отступы */
+  margin-top: var(--vertical-gap);
+  margin-bottom: var(--vertical-gap);
+
+  /* Пример оформления */
+  background-color: #a4a4a4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+/* Типографика в rem */
+.title {
+  font-size: 3rem; /* 48px при root=16px */
+  margin: 0 0 1rem;
+}
+
+.subtitle {
+  font-size: 1.5rem; /* 24px при root=16px */
+  margin: 0;
+}
