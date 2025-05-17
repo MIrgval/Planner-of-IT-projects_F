@@ -1,0 +1,16 @@
+.modal .ant-modal-content {
+  border-radius: 1rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  margin-top: 1rem;
+}
+
+.input {
+  border-radius: 0.5rem;
+  background-color: #f0f8ff;
+}
