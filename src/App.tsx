@@ -1,18 +1,18 @@
 import './App.css'
-import { MyHeader } from './components/Header/Header'
 import { Routes, Route } from 'react-router-dom'
 
-import { Main } from './pages/Main/Main'
-import { Project } from './pages/Project/Project'
+import { Face } from './pages/Face/Face'
+import { TheProject } from './pages/TheProject/TheProject'
+import { Home } from './pages/Home/Home'
 
 function App() {
   return (
     <>
-      <MyHeader />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/project' element={<Project />} />
+          <Route path='/' element={<Face />} />
+          <Route path='/project' element={<TheProject />} />
+          <Route path='/home' element={<Home />} />
         </Routes>
       </main>
     </>
