@@ -7,7 +7,6 @@
   padding: 0 var(--container-gutter);
 
   /* 1. Задаём базовую высоту: весь viewport минус 2rem на отступы */
-  margin-top: var(--vertical-gap);
   margin-bottom: var(--vertical-gap);
 
   /* Пример оформления */

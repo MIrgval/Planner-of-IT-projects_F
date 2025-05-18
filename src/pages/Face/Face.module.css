@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--vertical-gap) var(--container-gutter);
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--vertical-gap);
+}

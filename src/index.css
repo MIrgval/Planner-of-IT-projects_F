@@ -19,6 +19,7 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   background-color: var(--back-color);
+  
 }
 *, *::before, *::after {
   box-sizing: inherit;
@@ -37,4 +38,19 @@ html, body {
   display: flex;
   flex-direction: column;
   row-gap: var(--vertical-gap);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #bbb #fff;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: #fff;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
 }
