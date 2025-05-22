@@ -43,6 +43,7 @@ export const Register: React.FC<RegisterProps> = ({
         layout="vertical"
         onFinish={handleFinish}
         initialValues={{}}
+        autoComplete="off"
       >
         <Form.Item
           label="Имя"
@@ -54,6 +55,7 @@ export const Register: React.FC<RegisterProps> = ({
             placeholder="Имя"
             size="large"
             className={styles.input}
+            autoComplete="off"
           />
         </Form.Item>
 
@@ -67,6 +69,7 @@ export const Register: React.FC<RegisterProps> = ({
             placeholder="Фамилия"
             size="large"
             className={styles.input}
+            autoComplete="off"
           />
         </Form.Item>
 
@@ -83,6 +86,7 @@ export const Register: React.FC<RegisterProps> = ({
             placeholder="example@domain.com"
             size="large"
             className={styles.input}
+            autoComplete="off"
           />
         </Form.Item>
 
@@ -97,6 +101,7 @@ export const Register: React.FC<RegisterProps> = ({
             placeholder="••••••••"
             size="large"
             className={styles.input}
+            autoComplete="off"
           />
         </Form.Item>
 
@@ -122,6 +127,7 @@ export const Register: React.FC<RegisterProps> = ({
             placeholder="••••••••"
             size="large"
             className={styles.input}
+            autoComplete="new-password"
           />
         </Form.Item>
 
