@@ -4,21 +4,6 @@
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  padding: 1rem 4rem;
-  background-color: var(--back-color);
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-
-.button {
-  margin-left: auto;
-  border-radius: 2rem;
-  width: 8rem;
-}
-
 .content {
   flex: 1;
   display: flex;

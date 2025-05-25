@@ -30,7 +30,7 @@ export const MyHeader: React.FC = () => {
   // когда юзер шлёт e-mail для сброса
   const handleResetSend = (email: string) => {
     console.log('Reset link to:', email);
-    // тут ваш API-запрос
+    // API-запрос
     setIsModalReset(false);
   };
 
