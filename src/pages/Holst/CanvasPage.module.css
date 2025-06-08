@@ -1,0 +1,106 @@
+.root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #f6f8fb;
+}
+
+/* холст всегда растягивается */
+.canvasArea {
+  width: 100vw;
+  height: 100vh;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+}
+
+/* Панель управления — абсолютное позиционирование над холстом */
+.sidebar {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  width: 320px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(56, 84, 135, 0.15);
+  padding: 20px 16px 20px 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.18s;
+}
+
+.sidebarClosed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.openButton {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  z-index: 30;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.sidebarTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sidebarSection {
+  margin-bottom: 22px;
+}
+
+.panelButton {
+  margin-bottom: 14px !important;
+}
+
+.panelButton:last-child {
+  margin-bottom: 0 !important;
+}
+
+.divider {
+  margin: 12px 0 14px 0;
+  border: none;
+  border-top: 1px solid #e8e8e8;
+}
+
+.taskList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.taskListItem {
+  background: #f7fafd;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  cursor: grab;
+  font-weight: 500;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.taskListItem:active {
+  background: #ddeaff;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    left: 8px;
+    width: 94vw;
+    padding: 12px 6px;
+  }
+  .openButton {
+    left: 10px;
+  }
+}

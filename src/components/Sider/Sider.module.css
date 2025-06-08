@@ -1,76 +1,193 @@
 .sider {
-  flex: 1;
-  position: sticky;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 340px;
+  min-height: 100vh;
+  background: transparent;
+  padding: 0 12px;
+}
+
+.projectCard {
   background: #fff;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 1rem;
-}
-
-/* Коробка с названием */
-.titleBox {
-  flex: 0 0 auto;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(56, 84, 135, 0.08);
+  padding: 22px 18px 18px 18px;
+  margin-top: 48px;
+  margin-bottom: 28px;
   width: 100%;
-  margin-bottom: 1rem;
-  background-color: var(--back-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Центрирование текста внутри карточки */
 .projectTitle {
-  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
   text-align: center;
+  margin: 0;
+  color: #223049;
+  letter-spacing: 0.5px;
 }
 
-/* Общие стили для участниц и тегов */
-.panel {
-  width: 100%;
-  overflow: hidden; /* родитель скрывает переполнение, внутреннее — скролл */
+.centeredBlocks {
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  border-radius: 0 !important;
+  gap: 32px;
+  width: 100%;
+  justify-content: stretch;
 }
 
-/* Блок «Участники» (2/3 высоты) */
-.panelLarge {
-  flex: 5;
-  margin-bottom: 1rem;
-  outline: 1px solid #000;
-}
-
-/* Блок «Теги проекта» (1/3 высоты) */
-.panelSmall {
-  flex: 3;
-  outline: 1px solid #000;
-}
-
-/* Кнопки в шапке карточек */
-.panelControls {
+.cardUser {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(56, 84, 135, 0.07);
+  padding: 22px 18px 18px 18px;
+  width: 100%;
+  min-height: 550px;
   display: flex;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 0;
 }
 
-/* Скролл таблицы внутри карточки */
-.panel .ant-table-wrapper {
-  flex: 1;            /* таблица займёт всё доступное пространство */
-  overflow: auto;     /* прокрутка при необходимости */
+.cardTeg {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(119, 52, 235, 0.10);
+  padding: 22px 18px 18px 18px;
+  width: 100%;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1 1 0;
 }
 
-.grayHeader {
-  background-color: #D9D9D9 !important;
-  color: #000 !important;
-  font-weight: 600;
-  border-radius: 0 !important;
+.sectionTitleWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  min-height: 28px;
 }
 
-/* фон для всех body-ячеек */
-.grayCell {
-  background-color: #D9D9D9 !important;
+.sectionTitleCenter {
+  font-size: 16px;
+  font-weight: 500;
+  color: #354052;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sectionTitleRightBtn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  justify-content: center;
+}
+
+.addButton {
+  font-size: 13px;
+  padding: 0 12px;
+  border-radius: 7px;
+  height: 28px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addTagButton {
+  margin-left: 8px;
+  height: 28px;
+  width: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.tegList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #f7fafd;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.userName {
+  font-weight: 500;
+  font-size: 15px;
+  color: #223049;
+  background: #eef7ff;
+  border-radius: 8px;
+  padding: 2px 12px;
+  margin-right: 8px;
+  min-width: 76px;
+  display: inline-block;
+}
+
+/* Оставь userTagIcon и другие tag-классы, если они нужны для участников */
+.userTagIcon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 22px;
+  border-radius: 8px;
+  background: #f5f8fe;
+  color: #486ba0;
+  font-size: 15px;
+  padding: 2px 8px;
+}
+
+.userTagFrontend {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+.userTagBackend {
+  background: #fdeaea;
+  color: #d4380d;
+}
+.userTagDesign {
+  background: #f9f0ff;
+  color: #722ed1;
 }

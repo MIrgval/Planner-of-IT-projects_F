@@ -20,15 +20,6 @@ export const Login: React.FC<LoginProps> = ({
 }) => {
   const [form] = Form.useForm();
 
-  const handleOk = () => {
-    form.validateFields()
-      .then(values => {
-        onLogin(values as any);
-      })
-      .catch(() => {
-        // ошибки валидации
-      });
-  };
 
   return (
     <Modal

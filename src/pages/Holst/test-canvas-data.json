@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "task",
+      "position": { "x": 80, "y": 40 },
+      "data": {
+        "id": "1",
+        "name": "Создать макет",
+        "teg_id": "Frontend",
+        "status": "waiting",
+        "description": "Нарисовать первую версию интерфейса",
+        "task_duration": "01.01.2025 12:00",
+        "project_id": "42"
+      }
+    },
+    {
+      "id": "2",
+      "type": "task",
+      "position": { "x": 480, "y": 60 },
+      "data": {
+        "id": "2",
+        "name": "Сделать API",
+        "teg_id": "Backend",
+        "status": "in_progress",
+        "description": "Реализовать REST endpoint для задач",
+        "task_duration": "05.01.2025 12:00",
+        "project_id": "42"
+      }
+    },
+    {
+      "id": "3",
+      "type": "task",
+      "position": { "x": 300, "y": 260 },
+      "data": {
+        "id": "3",
+        "name": "Рефакторинг",
+        "teg_id": "Frontend",
+        "status": "overdue",
+        "description": "Убрать лишние стили, оптимизация компонентов",
+        "task_duration": "20.12.2024 18:00",
+        "project_id": "42"
+      }
+    },
+    {
+      "id": "4",
+      "type": "task",
+      "position": { "x": 700, "y": 200 },
+      "data": {
+        "id": "4",
+        "name": "Тесты",
+        "teg_id": "QA",
+        "status": "completed",
+        "description": "Покрыть проект автотестами",
+        "task_duration": "10.01.2025 18:00",
+        "project_id": "42"
+      }
+    }
+  ],
+  "edges": [
+    { "id": "e1-2", "source": "1", "target": "2", "animated": true },
+    { "id": "e2-3", "source": "2", "target": "3", "animated": true },
+    { "id": "e2-4", "source": "2", "target": "4", "animated": false }
+  ]
+}

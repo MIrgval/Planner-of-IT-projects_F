@@ -6,6 +6,8 @@ import { Button, Layout } from 'antd';
 import { Register } from '../Register/Register';
 import { Login } from '../Login/Login';
 import { ResetPassword } from '../Reset-password/Reset';
+import { Avatar } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const { Header } = Layout;
 
@@ -37,24 +39,30 @@ export const MyHeader: React.FC = () => {
   return (
     <>
       <Header className={styles.header}>
-        <img src={logo} alt="Логотип" className={styles.logo} />
-        <div className={styles.buttons}>
-          <Button
-            type="primary"
-            className={styles.button}
-            onClick={() => setIsModalLogin(true)}
-          >
-            Авторизация
-          </Button>
-          <Button
-            type="primary"
-            className={styles.button}
-            onClick={() => setIsModalRegister(true)}
-          >
-            Регистрация
-          </Button>
-        </div>
-      </Header>
+  <img src={logo} alt="Логотип" className={styles.logo} />
+  <div className={styles.buttons}>
+    <Button
+      type="primary"
+      className={styles.button}
+      onClick={() => setIsModalLogin(true)}
+    >
+      Авторизация
+    </Button>
+    <Button
+      type="primary"
+      className={styles.button}
+      onClick={() => setIsModalRegister(true)}
+    >
+      Регистрация
+    </Button>
+    {/* Аватар пользователя */}
+    <Avatar
+      size="large"
+      icon={<UserOutlined />}
+      style={{ marginLeft: 16, backgroundColor: '#b9b9b9', verticalAlign: 'middle' }}
+    />
+  </div>
+</Header>
 
       {/* Регистрация */}
       <Register

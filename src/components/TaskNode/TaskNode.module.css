@@ -1,0 +1,101 @@
+.card {
+  background: #fff;
+  border: 3px solid #aaa;
+  border-radius: 18px;         /* побольше скругление */
+  min-width: 350px;
+  min-height: 240px;
+  box-shadow: 0 4px 24px 0 #32325a14;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: inherit;
+  padding: 0;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.selected {
+  box-shadow: 0 0 0 4px #89f2ff80;
+}
+
+.waiting {
+  border-color: #ccc; /* Серый — ожидание */
+}
+.inProgress {
+  border-color: #ffb02c; /* Оранжевый — в процессе */
+}
+.overdue {
+  border-color: #ff4141; /* Красный — просрочено */
+}
+.completed {
+  border-color: #1bc96c; /* Зеленый — завершено */
+}
+
+.handle {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50%;
+  background: #fff;
+  border: 2.5px solid #d7dbe5;
+  top: calc(50% - 11px) !important;
+  box-shadow: 0 2px 8px #d7dbe544;
+}
+
+.header {
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 2px solid #f5f6fa;
+  padding: 18px 0 10px 0;
+  border-radius: 18px 18px 0 0;
+  background: #f8fafd;
+  letter-spacing: 0.5px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 16px;
+  background: #f4f6fb;
+  margin: 16px;
+  border-radius: 10px;
+  font-size: 2.1rem;
+  color: #222;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 18px 14px 18px;
+}
+
+.deadline {
+  background: #e8edf7;
+  border: 2px solid #dde3ec;
+  border-radius: 7px;
+  padding: 8px 20px;
+  font-size: 1.28rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.tegBlock {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.tagHash {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  line-height: 1;
+}
+.tagName {
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: #2e384d;
+  letter-spacing: 0.2px;
+}
