@@ -1,117 +1,94 @@
-import React, { useMemo } from "react";
+import React, { useState } from "react";
+import { Card, Spin, Alert, Upload, Button } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 import { Chart } from "react-google-charts";
-import canvasData from "./canvas-data.json";
-import styles from "./ProjectDiagramPage.module.css";
 
-// Дата создания проекта (в формате 'дд.мм.гггг')
-const PROJECT_START = "01.01.2025";
+type GanttTask = {
+  id: string;
+  name: string;
+  resource: string;
+  start_date: string; // ISO
+  end_date: string;   // ISO
+  duration: number | null;
+  percent_complete: number;
+  dependencies: string | null;
+};
 
-// Функция для парсинга "дд.мм.гггг" в объект Date
-function parseDate(dateString: string): Date {
-  const [day, month, year] = dateString.split(".").map(Number);
-  return new Date(year, month - 1, day);
-}
+const GanttChartPage: React.FC = () => {
+  const [data, setData] = useState<GanttTask[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
 
-// Формируем зависимости для задач по edges
-function getDependencies(edges: any[]): Record<string, string[]> {
-  const depMap: Record<string, string[]> = {};
-  edges.forEach((e) => {
-    if (!depMap[e.target]) depMap[e.target] = [];
-    depMap[e.target].push(e.source);
-  });
-  return depMap;
-}
-
-const ProjectDiagramPage: React.FC = () => {
-  // Получаем зависимости между задачами
-  const dependenciesMap = useMemo(
-    () => getDependencies(canvasData.edges),
-    []
-  );
-
-  // Генерируем данные для Google Gantt Chart
-  const data = useMemo(() => {
-    const ganttData: any[] = [
-      [
-        "Task ID",
-        "Task Name",
-        "Resource",
-        "Start Date",
-        "End Date",
-        "Duration",
-        "Percent Complete",
-        "Dependencies",
-      ],
-    ];
-
-    // Для поиска стартовой даты первой задачи
-    const firstTask = canvasData.nodes.find((n: any) => n.id === "1");
-    const projectStartDate = firstTask
-      ? parseDate(PROJECT_START)
-      : new Date();
-
-    for (const node of canvasData.nodes) {
-      if (node.type !== "task") continue;
-      const d = node.data;
-
-      // Для первой задачи используем дату создания проекта
-      const start =
-        d.id === "1" ? projectStartDate : parseDate(d.task_duration);
-      // Для примера: окончание = старт + 2 дня
-      const end = new Date(start.getTime() + 2 * 24 * 60 * 60 * 1000);
-
-      // Прогресс по статусу
-      let percent = 0;
-      if (d.status === "completed") percent = 100;
-      else if (d.status === "in_progress") percent = 50;
-      else if (d.status === "overdue") percent = 80;
-      else percent = 0;
-
-      ganttData.push([
-        d.id,
-        d.name,
-        d.teg_id,
-        start,
-        end,
-        null,
-        percent,
-        (dependenciesMap[d.id] || []).join(","),
-      ]);
-    }
-
-    // DEBUG (можно убрать):
-    // console.log("DATA ДЛЯ ГАНТА", ganttData);
-
-    return ganttData;
-  }, [dependenciesMap]);
-
-  const options = {
-    height: 500,
-    gantt: {
-      trackHeight: 50,
-      labelStyle: {
-        fontName: "Roboto",
-        fontSize: 14,
-      },
-    },
+  // Загрузка и чтение json файла
+  const handleFileChange = (file: File) => {
+    setLoading(true);
+    setErr(null);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const content = e.target?.result as string;
+        const json = JSON.parse(content);
+        if (!Array.isArray(json)) throw new Error("Ожидается массив задач");
+        setData(json);
+      } catch (e: any) {
+        setErr("Ошибка чтения файла: " + e.message);
+      }
+      setLoading(false);
+    };
+    reader.readAsText(file);
+    return false; // чтобы анtd не пытался грузить сам
   };
 
+  const chartData = [
+    [
+      { type: "string", label: "Task ID" },
+      { type: "string", label: "Task Name" },
+      { type: "string", label: "Resource" },
+      { type: "date", label: "Start Date" },
+      { type: "date", label: "End Date" },
+      { type: "number", label: "Duration" },
+      { type: "number", label: "Percent Complete" },
+      { type: "string", label: "Dependencies" }
+    ],
+    ...data.map(task => [
+      task.id,
+      task.name,
+      task.resource,
+      task.start_date ? new Date(task.start_date) : null,
+      task.end_date ? new Date(task.end_date) : null,
+      task.duration,
+      task.percent_complete,
+      task.dependencies || null
+    ])
+  ];
+
   return (
-    <div className={styles.root}>
-      <header className={styles.header}>
-        <h2>Диаграмма Ганта (Google Charts)</h2>
-      </header>
-      <div>
+    <Card title="Диаграмма Ганта (локальный JSON)" style={{ margin: 24 }}>
+      <Upload
+        beforeUpload={handleFileChange}
+        accept=".json"
+        showUploadList={false}
+        multiple={false}
+        maxCount={1}
+      >
+        <Button icon={<UploadOutlined />}>Загрузить JSON файл с задачами</Button>
+      </Upload>
+
+      {loading && <Spin style={{ marginTop: 16 }} />}
+      {err && <Alert type="error" message="Ошибка" description={err} style={{ marginTop: 16 }} />}
+
+      {data.length > 0 && !loading && !err && (
         <Chart
           chartType="Gantt"
           width="100%"
           height="500px"
-          data={data}
-          options={options}
+          data={chartData}
+          loader={<Spin />}
+          rootProps={{ "data-testid": "1" }}
         />
-      </div>
-    </div>
+      )}
+    </Card>
   );
 };
 
-export default ProjectDiagramPage;
+export default GanttChartPage;

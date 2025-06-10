@@ -4,12 +4,14 @@ import { Button, Layout, Typography } from 'antd'
 import { ProjectCard } from '../ProjectCard/ProjectCard'
 import { Header } from 'antd/es/layout/layout'
 import { CreateProject } from '../CreateProject/CreateProject'
+import { useNavigate } from 'react-router-dom'
 
 const { Title } = Typography;
 const { Content } = Layout
 
 export const Projects: React.FC = () => {
   const [isModalCreate, setIsModalCreate] = useState(false);
+  const navigate = useNavigate();
 
   const headers = ['Имя', 'Проект', 'Описание', 'Роль', 'Действия']
   const headerFlex = [4, 6, 8, 4, 2]
@@ -47,14 +49,20 @@ export const Projects: React.FC = () => {
 
           {/* Прокручиваемый список */}
           <div className="scrollable" style={{ flex: 1, overflowY: 'auto', padding: '0 1rem', }}>
-            {placeholders.map(item => (
+            {placeholders.map((item, idx) => (
               <ProjectCard
                 key={item.id}
                 fullName={item.fullName}
                 projectName={item.projectName}
                 description={item.description}
                 creatorOrMember={item.creatorOrMember}
-                onOpen={() => console.log('Open', item.id)}
+                onOpen={() => {
+                  if (idx === 0) {
+                    navigate('/project');
+                  } else {
+                    console.log('Open', item.id);
+                  }
+                }}
                 onDelete={() => console.log('Delete', item.id)}
               />
             ))}

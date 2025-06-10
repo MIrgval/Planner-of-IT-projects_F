@@ -1,128 +1,42 @@
-{
-  "nodes": [
-    {
-      "id": "1",
-      "type": "task",
-      "position": {
-        "x": -346.7296075605302,
-        "y": -421.4858651898947
-      },
-      "data": {
-        "id": "1",
-        "name": "Создать макет",
-        "teg_id": "Frontend",
-        "status": "waiting",
-        "description": "Нарисовать первую версию интерфейса",
-        "task_duration": "01.01.2025",
-        "project_id": "42"
-      },
-      "width": 701,
-      "height": 248,
-      "selected": false,
-      "positionAbsolute": {
-        "x": -346.7296075605302,
-        "y": -421.4858651898947
-      },
-      "dragging": false
-    },
-    {
-      "id": "2",
-      "type": "task",
-      "position": {
-        "x": 754.1882546316529,
-        "y": -349.351478745848
-      },
-      "data": {
-        "id": "2",
-        "name": "Сделать API",
-        "teg_id": "Backend",
-        "status": "in_progress",
-        "description": "Реализовать REST endpoint для задач",
-        "task_duration": "05.01.2025",
-        "project_id": "42"
-      },
-      "width": 669,
-      "height": 248,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 754.1882546316529,
-        "y": -349.351478745848
-      },
-      "dragging": false
-      
-    },
-    {
-      "id": "3",
-      "type": "task",
-      "position": {
-        "x": 294.20729039510593,
-        "y": 321.7889024522035
-      },
-      "data": {
-        "id": "3",
-        "name": "Рефакторинг",
-        "teg_id": "Frontend",
-        "status": "overdue",
-        "description": "Убрать лишние стили, оптимизация компонентов",
-        "task_duration": "20.12.2025",
-        "project_id": "42"
-      },
-      "width": 839,
-      "height": 248,
-      "selected": true,
-      "positionAbsolute": {
-        "x": 294.20729039510593,
-        "y": 321.7889024522035
-      },
-      "dragging": false
-    },
-    {
-      "id": "4",
-      "type": "task",
-      "position": {
-        "x": 1364.2307013611874,
-        "y": 174.89825837879235
-      },
-      "data": {
-        "id": "4",
-        "name": "Тесты",
-        "teg_id": "QA",
-        "status": "completed",
-        "description": "Покрыть проект автотестами",
-        "task_duration": "10.01.2025",
-        "project_id": "42"
-      },
-      "width": 520,
-      "height": 248,
-      "selected": false,
-      "positionAbsolute": {
-        "x": 1364.2307013611874,
-        "y": 174.89825837879235
-      },
-      "dragging": false
-    }
-  ],
-  "edges": [
-    {
-      "id": "e1-2",
-      "source": "1",
-      "target": "2",
-      "animated": true,
-      "type": "custom"
-    },
-    {
-      "id": "e2-3",
-      "source": "2",
-      "target": "3",
-      "animated": true,
-      "type": "custom"
-    },
-    {
-      "id": "e2-4",
-      "source": "2",
-      "target": "4",
-      "animated": false,
-      "type": "custom"
-    }
-  ]
-}
+[
+  {
+    "id": "1",
+    "name": "Создать макет",
+    "resource": "Frontend",
+    "start_date": "2024-12-25T09:00:00",
+    "end_date": "2025-01-01T12:00:00",
+    "duration": null,
+    "percent_complete": 0,
+    "dependencies": null
+  },
+  {
+    "id": "2",
+    "name": "Сделать API",
+    "resource": "Backend",
+    "start_date": "2024-12-25T09:00:00",
+    "end_date": "2025-01-05T14:00:00",
+    "duration": null,
+    "percent_complete": 0,
+    "dependencies": "1"
+  },
+  {
+    "id": "4",
+    "name": "Тесты",
+    "resource": "QA",
+    "start_date": "2025-01-05T14:00:00",
+    "end_date": "2025-01-10T18:00:00",
+    "duration": null,
+    "percent_complete": 0,
+    "dependencies": "2"
+  },
+  {
+    "id": "3",
+    "name": "Рефакторинг",
+    "resource": "Frontend",
+    "start_date": "2025-01-01T12:00:00",
+    "end_date": "2025-12-20T10:00:00",
+    "duration": null,
+    "percent_complete": 0,
+    "dependencies": "2"
+  }
+]
