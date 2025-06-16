@@ -11,3 +11,36 @@
   padding: 0 8px;
   font-size: 1rem;
 }
+.row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 12px 8px;
+  align-items: center;
+}
+
+.cardRow {
+  transition: background 0.3s;
+  border-radius: 8px;
+  margin: 4px 0;
+  background: #f7f7f7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cardRow:hover {
+  background: #e2f4fa;
+}
+
+.cell {
+  text-align: center;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Колонки */
+.col-0 { flex: 0 0 15%; }  /* Имя */
+.col-1 { flex: 0 0 20%; }  /* Проект */
+.col-2 { flex: 0 0 35%; }  /* Описание */
+.col-3 { flex: 0 0 15%; }  /* Роль */
+.col-4 { flex: 0 0 15%; }  /* Действия */

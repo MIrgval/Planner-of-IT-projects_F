@@ -6,6 +6,7 @@ import { TheProject } from './pages/TheProject/TheProject'
 import { Home } from './pages/Home/Home'
 import { ReactFlowProvider } from 'reactflow';
 import Diagram from './pages/Diagram/ProjectDiagramPage';
+import { Dors } from './pages/Dors/Dors';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Face />} />
           <Route path='/project' element={<TheProject />} />
+          <Route path='/Dors' element={<Dors />} />
           <Route path='/home' element={<Home />} />
           <Route path='/project/:id/canvas' element={<CanvasPage />} />
           <Route path="/project/:id/diagram" element={<Diagram />} />

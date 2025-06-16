@@ -39,22 +39,9 @@ export const MyHeader: React.FC = () => {
   return (
     <>
       <Header className={styles.header}>
-  <img src={logo} alt="Логотип" className={styles.logo} />
+  <img src={logo} alt="Логотип" className={styles.header_logo} />
   <div className={styles.buttons}>
-    <Button
-      type="primary"
-      className={styles.button}
-      onClick={() => setIsModalLogin(true)}
-    >
-      Авторизация
-    </Button>
-    <Button
-      type="primary"
-      className={styles.button}
-      onClick={() => setIsModalRegister(true)}
-    >
-      Регистрация
-    </Button>
+   
     {/* Аватар пользователя */}
     <Avatar
       size="large"

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Card, Spin, Alert, Upload, Button } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { Chart } from "react-google-charts";
+import { MyHeader } from "../../components/Header/Header";
+import styles from "./ProjectDiagramPage.module.css";
 
 type GanttTask = {
   id: string;
   name: string;
   resource: string;
-  start_date: string; // ISO
-  end_date: string;   // ISO
+  start_date: string;
+  end_date: string;
   duration: number | null;
   percent_complete: number;
   dependencies: string | null;
@@ -19,7 +21,6 @@ const GanttChartPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
 
-  // Загрузка и чтение json файла
   const handleFileChange = (file: File) => {
     setLoading(true);
     setErr(null);
@@ -36,7 +37,7 @@ const GanttChartPage: React.FC = () => {
       setLoading(false);
     };
     reader.readAsText(file);
-    return false; // чтобы анtd не пытался грузить сам
+    return false;
   };
 
   const chartData = [
@@ -48,7 +49,7 @@ const GanttChartPage: React.FC = () => {
       { type: "date", label: "End Date" },
       { type: "number", label: "Duration" },
       { type: "number", label: "Percent Complete" },
-      { type: "string", label: "Dependencies" }
+      { type: "string", label: "Dependencies" },
     ],
     ...data.map(task => [
       task.id,
@@ -63,31 +64,36 @@ const GanttChartPage: React.FC = () => {
   ];
 
   return (
-    <Card title="Диаграмма Ганта (локальный JSON)" style={{ margin: 24 }}>
-      <Upload
-        beforeUpload={handleFileChange}
-        accept=".json"
-        showUploadList={false}
-        multiple={false}
-        maxCount={1}
-      >
-        <Button icon={<UploadOutlined />}>Загрузить JSON файл с задачами</Button>
-      </Upload>
+    <div className={styles.bg}>
+      <MyHeader />
+      <div className={styles.container}>
+        <Card title="Диаграмма Ганта (локальный JSON)">
+          <Upload
+            beforeUpload={handleFileChange}
+            accept=".json"
+            showUploadList={false}
+            multiple={false}
+            maxCount={1}
+          >
+            <Button icon={<UploadOutlined />}>Загрузить JSON файл с задачами</Button>
+          </Upload>
 
-      {loading && <Spin style={{ marginTop: 16 }} />}
-      {err && <Alert type="error" message="Ошибка" description={err} style={{ marginTop: 16 }} />}
+          {loading && <Spin style={{ marginTop: 16 }} />}
+          {err && <Alert type="error" message="Ошибка" description={err} style={{ marginTop: 16 }} />}
 
-      {data.length > 0 && !loading && !err && (
-        <Chart
-          chartType="Gantt"
-          width="100%"
-          height="500px"
-          data={chartData}
-          loader={<Spin />}
-          rootProps={{ "data-testid": "1" }}
-        />
-      )}
-    </Card>
+          {data.length > 0 && !loading && !err && (
+            <Chart
+              chartType="Gantt"
+              width="100%"
+              height="500px"
+              data={chartData}
+              loader={<Spin />}
+              rootProps={{ "data-testid": "1" }}
+            />
+          )}
+        </Card>
+      </div>
+    </div>
   );
 };
 

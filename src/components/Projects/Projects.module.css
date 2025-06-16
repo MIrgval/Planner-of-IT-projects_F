@@ -1,5 +1,35 @@
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem 1rem;
+  background: transparent;
+}
+
+.pageTitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #262626;
+}
+
+.groupTag {
+  display: inline-block;
+  margin-left: 2rem;
+  padding: 2rem 1rem;
+  color: #b62feb;
+  font-size: 3rem;
+  font-weight: 500;
+  border-radius: 999px;
+  line-height: 1;
+}
+
+.addButton {
+  border-radius: 2rem;
+  padding: 0 1.5rem;
+  font-weight: 500;
+}
+
 .content {
-  outline: 1px solid black;
   flex: 1;
   background: #fff;
   margin: 0.1rem 1rem 1rem;
@@ -7,7 +37,6 @@
   flex-direction: column;
 }
 
-/* Заголовок */
 .header {
   position: sticky;
   top: 0;
@@ -16,38 +45,26 @@
   display: flex;
   height: 3rem;
   border-bottom: 1px solid #eee;
-  outline: 1px solid black;
   padding-right: 1.75rem;
   padding-left: 1rem;
 }
 
-/* Ячейка заголовка */
 .cell {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
   font-weight: bold;
-  /* разделитель справа для всех, кроме последней */
   border-right: 1px solid #ccc;
+  padding: 0 8px;
+  min-height: 3rem;
 }
-
-/* У последней ячейки убираем правый бордер */
 .cell:last-child {
   border-right: none;
 }
 
-.miniHeader {
-  display: flex;
-  align-items: center;
-  padding: 1rem 4rem;
-  background-color: var(--back-color);
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-
-.button {
-  margin-left: auto;
-  border-radius: 2rem;
-  width: 8rem;
-}
+.col-0 { flex: 0 0 15%; }
+.col-1 { flex: 0 0 20%; }
+.col-2 { flex: 0 0 35%; }
+.col-3 { flex: 0 0 15%; }
+.col-4 { flex: 0 0 15%; }

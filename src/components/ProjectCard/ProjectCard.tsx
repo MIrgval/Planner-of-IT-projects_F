@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './ProjectCard.module.css'
-
-import { Card, Row, Col, Button } from 'antd'
+import { Button, Tag } from 'antd'
 import { DeleteOutlined, EnterOutlined } from '@ant-design/icons'
 
 interface ProjectCardProps {
@@ -21,49 +20,18 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onOpen,
   onDelete,
 }) => (
-  <Card
-    className={styles.card}
-    size="small"
-    styles={{
-      body: {
-        padding: 0
-      }
-    }}
-  >
-    <Row align="middle" justify="space-between" style={{ height: '3rem' }}>
-      {[
-        { span: 4, content: fullName },
-        { span: 6, content: projectName },
-        { span: 8, content: description },
-        { span: 4, content: creatorOrMember },
-      ].map((col, i) => (
-        <Col
-          key={i}
-          span={col.span}
-          style={{
-            borderRight: i < 4 ? '1px solid #ccc' : undefined,
-          }}
-          className={styles.col}
-        >
-          {col.content}
-        </Col>
-      ))}
-
-      {/* Иконки */}
-      <Col span={1} style={{ textAlign: 'center' }}>
-        <Button
-          type="text"
-          icon={<EnterOutlined />}
-          onClick={onOpen}
-        />
-      </Col>
-      <Col span={1} style={{ textAlign: 'center' }}>
-        <Button
-          type="text"
-          icon={<DeleteOutlined />}
-          onClick={onDelete}
-        />
-      </Col>
-    </Row>
-  </Card>
+  <div className={`${styles.row} ${styles.cardRow}`}>
+    <div className={`${styles.cell} ${styles['col-0']}`}>{fullName}</div>
+    <div className={`${styles.cell} ${styles['col-1']}`}>{projectName}</div>
+    <div className={`${styles.cell} ${styles['col-2']}`}>{description}</div>
+    <div className={`${styles.cell} ${styles['col-3']}`}>
+      <Tag color={creatorOrMember === 'Создатель' ? 'green' : 'blue'}>
+        {creatorOrMember}
+      </Tag>
+    </div>
+    <div className={`${styles.cell} ${styles['col-4']}`} style={{ justifyContent: 'center', gap: 8 }}>
+      <Button type="text" icon={<EnterOutlined />} onClick={onOpen} />
+      <Button type="text" icon={<DeleteOutlined />} onClick={onDelete} danger />
+    </div>
+  </div>
 )

@@ -3,7 +3,7 @@
     {
       "id": "1",
       "type": "task",
-      "position": { "x": 80, "y": 40 },
+      "position": { "x": 0, "y": 0 },
       "data": {
         "id": "1",
         "name": "Создать макет",
@@ -17,7 +17,7 @@
     {
       "id": "2",
       "type": "task",
-      "position": { "x": 480, "y": 60 },
+      "position": { "x": 980, "y": 480 },
       "data": {
         "id": "2",
         "name": "Сделать API",
@@ -31,7 +31,7 @@
     {
       "id": "3",
       "type": "task",
-      "position": { "x": 300, "y": 260 },
+      "position": { "x": 2500, "y": 300 },
       "data": {
         "id": "3",
         "name": "Рефакторинг",
@@ -45,7 +45,7 @@
     {
       "id": "4",
       "type": "task",
-      "position": { "x": 700, "y": 200 },
+      "position": { "x": 2500, "y": 700 },
       "data": {
         "id": "4",
         "name": "Тесты",
