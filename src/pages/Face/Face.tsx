@@ -9,6 +9,7 @@ import {Register } from '../../components/Register/Register';
 import {Login } from '../../components/Login/Login';
 import {ResetPassword } from '../../components/Reset-password/Reset';
 
+
 const { Title, Paragraph } = Typography;
 
 export const Face: React.FC = () => {
